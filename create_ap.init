@@ -12,7 +12,7 @@
 dir="/usr/bin/create_ap"
 cmd="/usr/bin/create_ap -n -g 10.0.0.1 wlan0 AccessPointSSID"
 
-name=`create_ap`
+name="create_ap"
 pid_file="/var/run/$name.pid"
 stdout_log="/var/log/$name.log"
 stderr_log="/var/log/$name.err"
@@ -42,7 +42,7 @@ case "$1" in
     stop)
     if is_running; then
         echo -n "Stopping $name.."
-        kill `get_pid`
+        /usr/bin/create_ap --stop `get_pid`
         for i in {1..10}
         do
             if ! is_running; then
